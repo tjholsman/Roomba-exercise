@@ -49,7 +49,7 @@ Description by line:
 
 ## Notes
 
- The code was written with Node.js, which I used for the first for this exercise. My previous experience with JavaScript has been mostly limited to the context of email personalization, so some standard syntactic conventions may have been overlooked.
+ The code was written with Node.js, which I used for the first time for this exercise. My previous experience with JavaScript has been mostly limited to the context of email personalization, so some standard syntactic conventions may have been overlooked.
 
 ## Enhancement Ideas
 
