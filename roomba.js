@@ -97,35 +97,37 @@ function runRoomba(directions) {
     // Clear 'R' from current position
     room[position[0]][position[1]] = ''
     
-    // Move roomba by incrementing/decrementing along x or y axis
+    // Move roomba by incrementing/decrementing along x or y axis, staying in place at walls
     switch(directions.charAt(i)) {
       case 'N':
-        position[1]++;
+        if (position[1] < room[0].length - 1) {
+          position[1]++; 
+        }
         break;
       case 'S':
-        position[1]--;
+        if (position[1] > 0) {
+          position[1]--;
+        }
         break;
       case 'E':
-        position[0]++;
+        if (position[0] < room.length - 1) {
+          position[0]++;
+        }
         break;
       case 'W':
-        position[0]--;
+        if (position[0] > 0) {
+          position[0]--;
+        }
         break;
     }
   
-    // Print error and end loop if directions push outside of room array 
-    if (position[0] >= room.length || position[1] >= room.length) {
-      console.error('Oops, you hit a wall. Please try again.');
-      i = directions.length;
-    }
+    // Clean dirt pile if it exists and increment pilesCleaned
+    if (room[position[0]][position[1]] == 'd') {
+      pilesCleaned++;
+    }    
     
-    // Otherwise clean dirt pile if it exists, increment pilesCleaned, and mark roomba's position in the room
-    else {
-      if (room[position[0]][position[1]] == 'd') {
-        pilesCleaned++;
-      }    
-      room[position[0]][position[1]] = 'R'
-    }
+    // Mark roomba's position in the room
+    room[position[0]][position[1]] = 'R';
   }
   
   // Write final position and number of piles
